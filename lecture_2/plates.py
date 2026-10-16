@@ -36,17 +36,37 @@ def startswith_2_letters(s):
  #   return not any(char.isdigit() for char in s)
 
 def numbers_at_end(s):
-    for i in range(len(s)):
-        if s[i].isdigit():
-            first_digit = i
-        return s.index(first_digit)
-          
-    if s[first_digit:].isnumeric():
-            return True 
-    else:
-       return False
-
+        for i in range(len(s)):
+            if s[i].isdigit():
+                if s[i:].startswith("0"):
+                    return False
+                else:
+                    return s[i:].isnumeric()
+        return True
+            
 main()
 
         
-    
+ #  if s[i].isdigit() and s[i] != "0": 
+
+'''
+def numbers_at_end(s):
+        for i in range(len(s)):
+            if s[i].isdigit():
+                if s[i] != "0":
+                    return s[i:].isnumeric()
+        return True
+            
+main()
+
+'''
+
+'''
+def numbers_at_end(s):
+        for i in range(len(s)):
+            if s[i].isdigit():
+                if not s[i:].startswith("0"):
+                    return s[i:].isnumeric()
+        return True
+            
+'''
